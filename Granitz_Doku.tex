@@ -358,7 +358,7 @@
 \pagenumbering{arabic}		% Umbruch zu arabischen Seitenzahlen
 
 \newboolean{INTERNAL_VERSION}
-\setboolean{INTERNAL_VERSION}{false}
+\setboolean{INTERNAL_VERSION}{true}
 
 \ifthenelse{\boolean{INTERNAL_VERSION}}{
 }{
@@ -368,19 +368,14 @@
 	\begin{table}[h]
 	\begin{tabular}{||l||}
 	\hline
-	\textbf{Highlighted text (\hl{this way}) is meant to be for internal version only}\\
-	\textbf{and to be removed for version to be published.}
+	\textbf{Highlighted text (\hl{this way}) is either meant to be for internal version only}\\
+	\textbf{and to be removed for version to be published \texit{or} information to be verified.}
 	\\	
 	If a parameter name of a table's column is highlighted, the entire column will be removed.\\
 	Same applied to a table's line, if the line's first cell is highlighted.
 	\\
 	If the entire caption of a figure is highlighted, the entire figure will be removed.\\
 	If single sub-figure captions (within a minimap) are highlighted, only these sub-figures will be removed.
-	\\
-	\\
-	\\
-	\\
-	\textit{Please give additional comments what to be removed due to classification.}
 	\\
 	\hline
 	\end{tabular}
