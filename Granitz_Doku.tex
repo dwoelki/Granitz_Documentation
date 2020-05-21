@@ -1,0 +1,407 @@
+%% Dokumentklasse %%
+
+  \documentclass[a4paper, halfparskip-, bibtotoc, pointednumbers, openbib]{scrartcl}
+
+%% Pakete %%
+
+  \usepackage[a4paper,left=2.5cm,right=2.5cm,top=2cm,bottom=4cm]{geometry}         %% Seitenränder
+  \usepackage[latin1]{inputenc}                                                      %% ISO-Text mit Umlauten
+  \usepackage[T1]{fontenc}                                                           %% Zeichensatz mit Umlauten
+  \usepackage[english]{babel}                                                        %% BABEL -> deutsch, neue Rechtschreibung
+  \usepackage[dvips]{graphicx}
+  \usepackage[dvips]{rotating}
+  \usepackage{color}
+  \usepackage[reqno, fleqn]{amsmath}
+  \usepackage{longtable}
+  \usepackage{varioref}
+  \usepackage{multicol}
+	\usepackage{units}
+ % \usepackage{verbatim}
+  \usepackage{lscape}
+  \usepackage{float}
+ % \usepackage[light,outline]{draftcopy}
+ % \usepackage{natbib}
+
+
+  \usepackage{array}
+  \usepackage{tabularx}
+	  \newcolumntype{Y}{>{\center\arraybackslash}X}
+  \usepackage{multicol, multirow, calc, array} % Tabellen manipulieren
+  %\usepackage{ragged2e}
+  \usepackage{calc}
+  \usepackage{amsmath, amssymb, amsfonts} % Mathebibliotheken
+
+  \usepackage[table]{xcolor}
+	
+
+  \usepackage{bm}
+ % \usepackage{palatino}
+  \usepackage{lmodern}
+ % \usepackage{mathptmx}
+ % \usepackage{helvet}
+ % \usepackage{courier}
+
+  \usepackage[automark]{scrpage2}
+  \usepackage[margin=30pt,tableposition=top,labelfont={sf,bf},font=small]{caption}             %% Tabellen und Abbildungsüberschriften
+	  %\usepackage{subfig}
+	%\usepackage[list=true, font=large, labelfont=bf, labelformat=brace, position=top]{subcaption}
+	\usepackage[margin=0pt,size=smaller,labelformat=parens,labelsep=space,skip=6pt,list=true,hypcap=false]{subcaption}
+	\captionsetup[subfigure]{margin=0pt,size=smaller,labelformat=parens,labelsep=space,skip=6pt,list=true,hypcap=false}
+	\usepackage[pdfpagelabels,linktocpage,colorlinks,linkcolor=blue,citecolor=magenta,bookmarksnumbered]{hyperref} %% Hyperlinks im PDF
+  \usepackage{hypcap}                                                                          %% Korrekte Bild-Referenz
+
+  \usepackage{graphicx}
+	\usepackage{comment}
+	\usepackage{soul}
+  \usepackage{epstopdf}
+	
+	%\usepackage{ulem}
+	\usepackage{color}
+	\usepackage{listings}
+
+%% Definitionen %%
+
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   %%  Abstand Oberer Bildrand-Abbildung
+   %%
+      \renewcommand\hypcapspace{\baselineskip}
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   %%  PDF Optionen
+%   %%
+%      \hypersetup{
+%        pdftitle={TSM1 - 1.Hausaufgabe},
+%        pdfauthor={Georg Walde},
+%        pdfsubject={Hausaufgabe 1},
+%        pdfproducer={ps2pdf},
+%        pdfcreator={Latex}
+%      }
+%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   %%  Move numbers of section headings left into the margin
+%   %%
+%   %% Re-define \chapterformat only if it is defined and not
+%   %% \relax without making it \relax if it is not defined:
+%      \begingroup
+%      \expandafter\expandafter\expandafter\endgroup
+%      \expandafter\ifx\csname chapterformat\endcsname\relax\else
+%        \renewcommand*{\chapterformat}{%
+%          \llap{%
+%            % Following line is the original definition
+%            \chapappifchapterprefix{\ }\thechapter\autodot\enskip
+%          }%
+%        }
+%      \fi
+%
+%      % Re-define \othersectionlevelsformat
+%      \renewcommand*{\othersectionlevelsformat}[1]{%
+%        \llap{%
+%          % Following line is the original definition
+%          \csname the#1\endcsname\autodot\enskip
+%        }%
+%      }
+%   %%
+%   %%  End of redefining format makros
+%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\pagestyle{scrheadings}
+      \clearscrheadfoot
+%       \ihead{\headmark}
+%       \ohead{\pagemark}
+        \ofoot{\ifnum \value{page}>1 \thepage \fi}
+				\definecolor{lightgray}{gray}{0.6}
+				\definecolor{cell-lightgray}{gray}{0.95}
+				\ifoot{\color{lightgray} \scriptsize \upshape
+				Dominik Woelki, Berlin Moabit\\
+				 \textit{https://github.com/dwoelki}
+				}
+
+%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   %% Neubeginn der Gleichungsnummerierung am Kapitelanfang
+%   %%
+%      \numberwithin{equation}{chapter}
+%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   %% Änderung der Tabellenparameter
+   %%
+      \setlength{\arrayrulewidth}{0.5pt}
+      \renewcommand{\arraystretch}{1.3}
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   %% Aussehen der enumerate-Zahlen
+   %%
+      \renewcommand\labelenumi {\sffamily{\bfseries{\theenumi.}}}
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   %% Nummerierung und Unterschriften von subfigures
+   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   KOMMENTIERT DW 2020-03-04, WEIL ANDERES PACKAGE BENUTZT      \captionsetup[subfloat]{listofformat=subsimple, labelformat=simple, labelsep=colon}
+     % \renewcommand\thesubfigure {\thefigure \thinspace \alph{subfigure}}
+      \renewcommand\thesubfigure {\alph{subfigure}}
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   %% Tiefe der Verzeichnisses anpassen
+%   %%
+%     \setcounter{secnumdepth}{4}
+%     \setcounter{tocdepth}{4}
+%     \setcounter{lofdepth}{2}
+%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   %%  Draftcoppy ab Seite 2
+%   %%
+%      \draftcopyFirstPage{2}
+%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%\includeonly{Vorlage_muster}
+
+%%%\begin{document}
+
+\pagenumbering{Roman}		%Beginn mit römischen Seitenzahlen
+
+
+
+
+										
+\begin{document}
+			%----------------------------------------------
+			%
+			%									INSTITUTSSYMBOL
+			%
+			%----------------------------------------------	
+
+\hspace*{-2.5cm}															  % gesamte Titelseite um 1cm nach rechts verschieben
+\parbox[t][21cm][t]{3.5cm}										% zwischen den parbox'n darf keine Leerzeile existieren
+	{																						% sonst werden sie untereinander statt nebeneinander gestellt	
+		\begin{center}
+			\vspace*{-1cm}
+			\hspace*{1cm}
+			\includegraphics[scale=0.5]{img/cover}		% LOGO des LA
+		\end{center}
+	}
+\begin{sf}
+			%----------------------------------------------
+			%
+			%						INSTITUTSNAME UND PROFESSOR
+			%
+			%----------------------------------------------	
+\parbox[t][22cm][t]{12cm}											% parbox = 2.Spalte mit Text
+			  {																			% [Ausrichtung] [Höhe] [AusrichtenInnen] {Breite}
+			  	\begin{flushleft}
+					  \vspace*{-0.3cm}									% (2-x)cm = Abstand zwischen ITS-Logo und -Name
+				    \hspace*{8cm}
+				    \parbox[t][3.0cm][t]{12cm}				
+									{
+										%Dominik Woelki\\
+										%Berlin\\
+									}
+						
+			%----------------------------------------------
+			%
+			%									TITLE
+			%
+			%----------------------------------------------		
+						\vspace{2.5cm}														% Leerzeile vor vertikaler Abstandsangabe notwendig
+						\parbox[t][0.5cm][t]{12cm}									% [Ausrichtung] [Höhe] [AusrichtenInnen] {Breite}
+							{
+								\centering
+								 {
+								   \textbf{\LARGE{
+												\centerline{Granitz}
+												}}\\
+								 }  
+							}\\
+			%----------------------------------------------
+			%
+			%									SUB TITLE
+			%
+			%----------------------------------------------		
+						\vspace{4.5cm}														% Leerzeile vor vertikaler Abstandsangabe notwendig
+						\parbox[t][2cm][t]{12cm}									% [Ausrichtung] [Höhe] [AusrichtenInnen] {Breite}
+							{
+								\centering
+								 {
+									%\large{
+								   \textbf{\LARGE{
+										\centerline{Modelleisenbahnanlage}
+										\centerline{Spur N}
+										}}
+%S									\includegraphics[scale=1.0]{img/IPSM_splash_new.jpg}
+										%}
+								 }  
+							}				
+				
+				
+		 %----------------------------------------------
+		 %
+		 %									BOOK
+		 %
+		 %----------------------------------------------				
+						 \vspace{1.0cm}															% Leerzeile vor vertikaler Abstandsangabe notwendig
+						 \parbox[t][3cm][t]{12cm}
+								{
+									\centering
+												\textbf{\LARGE{
+												\centerline{Dokumentation}%\\
+												%\centerline{Disk Temperature Model}
+												}
+												}\\
+					  		} 		
+					  \end{flushleft}
+
+
+		
+		 %----------------------------------------------
+		 %
+		 %							BETREUER und DATUM
+		 %
+		 %---------------------------------------------- 		  
+						\vspace*{2.0cm}
+						\parbox[t][1cm][t]{4cm}				
+							{
+								\leftline{\Large Dominik Woelki}
+								\vspace*{0.5cm}
+								%\hrule
+								\vspace*{0.5cm}
+								%\leftline{\Large \today}
+								\begin{tabular}{p{.25\textwidth-2\tabcolsep} p{.6\textwidth-2\tabcolsep}}
+								\hline
+								 & \\
+								%\Large \today & version: related to IPSM dev1.4
+								\Large \today & 
+								\end{tabular}
+							}
+ }	% end parbox (2.Spalte mit Text)
+\end{sf}
+
+\clearpage
+
+
+
+\tableofcontents
+\newpage
+\listoffigures
+\listoftables
+
+\newpage
+
+\section*{Nomenclature}
+\textbf{Symbols:}\\
+	\begin{tabular}{p{.15\textwidth-2\tabcolsep} p{.15\textwidth-2\tabcolsep} p{.7\textwidth-2\tabcolsep}}
+		$\Delta$ & & Difference \\
+		$\underline{x}$ & & Guess Vector \\
+	\end{tabular}
+\\
+
+%\newpage
+\noindent
+\textbf{Indices:}\\
+	\begin{tabular}{p{.25\textwidth-2\tabcolsep} p{.75\textwidth-2\tabcolsep}}
+		' & Null Dimensional \\
+	\end{tabular}
+\\
+
+%\newpage
+
+\noindent 
+\textbf{Abbreviations:}\\
+	\begin{tabular}{p{.25\textwidth-2\tabcolsep} p{.75\textwidth-2\tabcolsep}}
+		$\Psi$-Core & IPSM PSI-Core \\
+	  BR & Baureihe \\
+		DB & Deutsche Bundesbahn \\
+		DBAG & Deutsche Bahn AG \\
+		DR & Deutsche Reichsbahn \\
+		DWRRC & DWRasp-Rail-Controller \\
+		GPIO & General Purpose Input Output \\
+		IDE & Integrated Development Environment \\
+		ILR & Institut f\"ur Luft- und Raumfahrt der Technischen Universit\"at Berlin \\
+		IPSM & Interface for Performance and Secondary Air System Modeling \\
+		IRC & Internet Relay Chat \\
+		LAN & Local Area Network (z.B. Heimnetzwerk) \\
+		WLAN & Wireless Local Area Network \\
+		\\
+		\\
+		\\
+		Fig. & Abbildung (engl. figure) \\
+		Sec. & Kapitel (engl. section) \\
+		Tab. & Tabelle (engl. table) \\
+	\end{tabular}
+	
+\noindent 
+
+	
+\clearpage
+\pagenumbering{arabic}		% Umbruch zu arabischen Seitenzahlen
+
+\newboolean{INTERNAL_VERSION}
+\setboolean{INTERNAL_VERSION}{false}
+
+\ifthenelse{\boolean{INTERNAL_VERSION}}{
+}{
+
+	\section*{NOTE TO REVIEWERS}
+	
+	\begin{table}[h]
+	\begin{tabular}{||l||}
+	\hline
+	\textbf{Highlighted text (\hl{this way}) is meant to be for internal version only}\\
+	\textbf{and to be removed for version to be published.}
+	\\	
+	If a parameter name of a table's column is highlighted, the entire column will be removed.\\
+	Same applied to a table's line, if the line's first cell is highlighted.
+	\\
+	If the entire caption of a figure is highlighted, the entire figure will be removed.\\
+	If single sub-figure captions (within a minimap) are highlighted, only these sub-figures will be removed.
+	\\
+	\\
+	\\
+	\\
+	\textit{Please give additional comments what to be removed due to classification.}
+	\\
+	\hline
+	\end{tabular}
+	\end{table}
+	
+}{
+	% alternative text
+}
+
+	\include{tex/Abstract}
+
+  \include{tex/Introduction}
+	
+	\include{tex/Map}
+	
+	\include{tex/Operation}
+	
+	\include{tex/Anlage}
+	
+	\include{tex/Diorama}
+	
+	\include{tex/Hardware}
+	
+	\include{tex/Software}
+
+	\include{tex/Literature}
+
+  \include{tex/Appendix}
+
+\end{document}

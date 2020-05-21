@@ -1,0 +1,34 @@
+\section{Software}
+\label{sec:software}
+
+Softwareseitig handelt es sich um eine Eigenentwicklung, den DWRasp-Rail-Controller (DWRRC).
+Dieser setzt auf einer weiteren Eigenentwicklung auf, n\"amlich dem Projekt DWRasp-on-PsiCore.
+Die Git-Projekte zu beiden Projekten sind unter folgenden Links verf\"ugbar:
+\begin{itemize}
+	\item \textit{https://github.com/dwoelki/DWRasp-on-PsiCore}
+	\item \textit{https://github.com/dwoelki/DWRasp-Rail-Controller}
+\end{itemize}
+Zu beachten ist, dass das DWRasp-on-PsiCore Projekt selbst Drittsoftware einbindet.
+Dabei handelt es sich um das $\Psi$-Core, das am Institut f\"ur Luft- und Raumfahrt der Technischen Universit\"at Berlin (ILR) entwickelt wurde.
+Das $\Psi$-Core ist die Engine der ILR-hauseigenen Simulationsumgebung IPSM (Interface for Performance and Secondary Air System Modeling) \cite{Woe14}, \cite{Woe19c}.
+Zuf\"alligerweise sind der Sch\"opfer bzw. Hauptentwickler von IPSM sowie der Sch\"opfer von Granitz ein und dieselbe Person.
+
+Der Quellcode aller genannten Projekte ist fast vollst\"andig in der Programmiersprache Java geschrieben und objektorientiert.
+Das $\Psi$-Core sowie alle darauf aufbauenden Anwendungen, die ich schreibe (also auch DWRRC) sind \"ublicherweise stark modularisiert.
+Im vorliegenden Fall ist die Modularisierung aber linear und somit recht leicht nachvollziehbar.
+Als bevorzugte IDE wurde Netbeans IDE (sowohl in vor- als auch zu-Apache Zeiten) genutzt.
+Die aus den Projekten erzeugten Bibliotheken entsprechen somit \"ublicherweise Modulen/Plugins mit entsprechenden Netbeans Spezifikationen.
+Am einfachsten ist daher die Adaption der Projekte direkt mit Netbeans als frei verf\"ugbare IDE.
+Eine Konvertierung auf andere IDEs bzw. Extrahierung des ben\"otigten Quellcodes bedeutet f\"ur den ge\"ubten Programmierer aber nat\"urlich kein gro\"ser Aufwand.
+
+
+
+
+
+\subsection{Hardwareansteuerung \"uber GPIO}
+\label{sec:gpio}
+
+
+
+\subsection{Remotesteuerung \"uber IRC}
+\label{sec:remote_irc}
