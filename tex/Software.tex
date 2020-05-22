@@ -1,8 +1,8 @@
 \section{Software}
 \label{sec:software}
 
-Softwareseitig handelt es sich um eine Eigenentwicklung, den DWRasp-Rail-Controller (DWRRC).
-Dieser setzt auf einer weiteren Eigenentwicklung auf, n\"amlich dem Projekt DWRasp-on-PsiCore.
+Softwareseitig handelt es sich um eine Eigenentwicklung, den \textbf{DWRasp-Rail-Controller} (DWRRC).
+Dieser setzt auf einer weiteren Eigenentwicklung auf, n\"amlich dem Projekt \textbf{DWRasp-on-PsiCore}.
 Die Git-Projekte zu beiden Projekten sind unter folgenden Links verf\"ugbar:
 \begin{itemize}
 	\item \textit{https://github.com/dwoelki/DWRasp-on-PsiCore}
@@ -21,6 +21,12 @@ Die aus den Projekten erzeugten Bibliotheken entsprechen somit \"ublicherweise M
 Am einfachsten ist daher die Adaption der Projekte direkt mit Netbeans als frei verf\"ugbare IDE.
 Eine Konvertierung auf andere IDEs bzw. Extrahierung des ben\"otigten Quellcodes bedeutet f\"ur den ge\"ubten Programmierer aber nat\"urlich kein gro{\ss}er Aufwand.
 
+Ebenso ist eine Portierung in andere Programmiersprachen denkbar.
+Der Code der beiden oben aufgelisteten Module ist nicht sonderlich kompliziert.
+Mitunter ist Java als relativ hohe Programmiersprache f\"ur die nachfolgend noch vertiefte GPIO-Pin (General Purpose Input Output) Ansteuerung nicht optimal.
+Python oder C++ sind hier etwas besser.
+Die H\"urde f\"ur eine direkte Portierung ist hingegen die Abh\"angigkeit n\"utzlicher Klassen, die im $\Psi$-Core verortet sind.
+Das betrifft auch die komplette Remotesteuerung \"uber IRC (Internet Relay Chat).
 
 
 
@@ -32,3 +38,50 @@ Eine Konvertierung auf andere IDEs bzw. Extrahierung des ben\"otigten Quellcodes
 
 \subsection{Remotesteuerung \"uber IRC}
 \label{sec:remote_irc}
+
+\subsubsection{Technische Rahmenbedingungen f\"ur IRC als Kommunikationsmittel}
+
+Das $\Psi$-Core bringt grunds\"atzlich die komplette softwareseitige Infastruktur f\"ur eine einfache, auf kurzen Textnachrichten basierte Kommunikation \"uber einen Chat mit IRC-Protokoll mit.
+Der Host kann beliebig sein.
+Ich erstelle mir f\"ur meine Anwendungen passwortgesch\"utzte Channels auf frei nutzbarne Serverb von nationalen, wissenschaftlichen Einrichtungen.
+
+Regeltechnisch zu beachten ist, dass die Anlage bzw. ihre empfangenden Mini-Computer technisch gesehen Bots sind.
+Wer auf Nummer sicher gehen m\"ochte, kann bei den Host-Admins anfragen, ob dies ein Problem darstellt, da viele Server keine Bots erlauben.
+F\"ur den Anwendungsbereich Modellbahn ist das aber faktisch vernachl\"assigbar, da man letztendlich als Person noch hinter seinen Mini-Computern steht.
+Au{\ss}serdem zielt das Bot-Verbot auf alle m\"oglichen Arten dubioser Machenschaften sowie Server\"uberlastungen ab, was durch unser Szenario nicht in das Schema f\"allt.
+
+Weiterhin ist zu beachten, dass manche IRC-Hosts nicht mehr als eine Verbindung von der gleichen IP zulassen.
+Als Smartphone Benutzer kann man das Problem aufl\"osen, indem man einen einzigen zentralen Mini-Computer als Empf\"anger und ggf. Verteiler f\"ur die Anlage verwendet.
+Die Bedienung \"uber das Smartphone kann dann durch die mobile Daten, d.h. \"uber den regul\"aren Handyfunk erfolgen.
+Wenn alle Stricke rei{\ss}en, so kann man sich im Heimnetz einen eigenen IRC-Server einrichten.
+Hierf\"ur biete ich keine Anleitung.
+Es gibt aber mit Sicherheit fertige L\"osungen im Internet, z.B. auf \textit{https://stackoverflow.com}.
+Wer sucht, der findet - aber bitte nicht einfach unsortiert mit einem neuen Thread drauf losfragen!
+
+Das IRC-Protokoll ist sehr schlank, weshalb heutzutage keinerlei Bottlenecks bei der eigenen Internetverbindung vorliegen d\"urften.
+Die Latenz liegt ab und zu bei einigen Zehntelsekunden, das ist f\"ur eine Modellbahnansteuerung aber vollkommen ausreichend.
+Bzgl. Datenvolumen vom Smartphone ist die IRC Nutzung somit auch unbedenklich.
+
+Im $\Psi$-Core ebenfalls enthalten ist ein Interpreter von IRC-Nachrichten, der einiges an Grundbefehlen mitbringt.
+Das Konzept habe ich wohl durchdacht.
+Bitte hierf\"ur in die integrierte Hilfe (sogenannte JavaHelp) vom Modul \textit{IPSM\_NetManager} schauen.
+Der Interpreter kann durch Vererbung spezifiziert werden, was bereits im DWRasp-on-PsiCore sowie noch spezifischer im DWRRC vorbereitet ist.
+Die Grundidee der Interpreter ist, eingehende Nachrichten zu parsen, d.h. nach bestimmten Keywords abzufragen und entsprechend Befehle in tiefere Bereiche des Codes weiterzuleiten.
+Die allerwichtigsten Features auf die Schnelle:
+\begin{itemize}
+	\item Die Keywords k\"onnen kurz, aber m\"ussen markant gew\"ahlt werden.
+	\item Ein einfacher Marker in der Nachricht entscheidet dar\"uber, ob eine Aktion durchgef\"uhrt werden soll ($!$) oder ein Zustand abgefragt wird ($?$).
+	Das verpackt die Nachrichten in intuitive, kurze S\"atze wie bei der Kommunikation mit z.B. kleinen Kindern.
+	\item Die Mini-Computer reagieren grunds\"atzlich nur auf Nachrichten, wenn ihr Nickname enthalten ist und sie gerade nicht durch andere Chat-Benutzer besetzt sind.
+	\item Letzteres kann sehr einfach \"uber ein unumst\"andliches, bereits integriertes Autorisierungskonzept geregelt werden.
+\end{itemize}
+Es sei vorsichtshalber noch mal vermerkt, dass der Interpreter etc. nichts IRC-typisches sind, sondern es sich hier allein um die Implementierung (also softwareseitige Umsetzung) im $\Psi$-Core, seinerseits Grundlage des DWRRC handelt.
+
+Zum Schluss, bevor es an die eigentliche Anwendung geht:
+IRC ist sicher.
+Die Interpreter werten eingehende Daten nur als Text aus.
+Die Keywords selbst sind hardcoded.
+M\"oglichkeiten zur dynamischen Interpretation werden im $\Psi$-Core bewusst unterbunden.
+Obendrein limitieren IRC-Hosts \"ublicherweise die maximale L\"ange einer Nachricht sehr rigide.
+Dies kann nat\"urlich auch als Auswahlkriterium bei der Serversuche genutzt werden, ebenso wie das Verbot von Dateitransfer \"uber IRC (was im $\Psi$-Core aber ohnehin nicht unterst\"utzt wird).
+
