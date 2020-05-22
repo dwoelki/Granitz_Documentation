@@ -14,7 +14,9 @@ Das $\Psi$-Core ist die Engine der ILR-hauseigenen Simulationsumgebung IPSM (Int
 Zuf\"alligerweise sind der Sch\"opfer bzw. Hauptentwickler von IPSM sowie der Sch\"opfer von Granitz ein und dieselbe Person.
 
 Der Quellcode aller genannten Projekte ist fast vollst\"andig in der Programmiersprache Java geschrieben und objektorientiert.
-Das $\Psi$-Core sowie alle darauf aufbauenden Anwendungen, die ich schreibe (also auch DWRRC) sind \"ublicherweise stark modularisiert.
+Das $\Psi$-Core sowie alle darauf aufbauenden Anwendungen, die ich schreibe (also auch DWRRC) sind \"ublicherweise stark modularisiert
+\footnote{Der Begriff \textit{Modul} ist im Kontext von Software nicht gleichbedeutend mit dem Modul im Anlagenbau.
+Ein Softwaremodul, manchmal auch als Plugin bezeichnet, ist eine spezielle Form von Programmbibliotheken, die daf\"ur gedacht ist mit anderen Modulen kombiniert eine gr\"o{\ss}ere, komplexe Anwendung zu bilden, siehe auch \cite{Woe19c}.}.
 Im vorliegenden Fall ist die Modularisierung aber linear und somit recht leicht nachvollziehbar.
 Als bevorzugte IDE wurde Netbeans IDE (sowohl in vor- als auch zu-Apache Zeiten) genutzt.
 Die aus den Projekten erzeugten Bibliotheken entsprechen somit \"ublicherweise Modulen/Plugins mit entsprechenden Netbeans Spezifikationen.
@@ -70,7 +72,7 @@ Die Grundidee der Interpreter ist, eingehende Nachrichten zu parsen, d.h. nach b
 Die allerwichtigsten Features auf die Schnelle:
 \begin{itemize}
 	\item Die Keywords k\"onnen kurz, aber m\"ussen markant gew\"ahlt werden.
-	\item Ein einfacher Marker in der Nachricht entscheidet dar\"uber, ob eine Aktion durchgef\"uhrt werden soll ($!$) oder ein Zustand abgefragt wird ($?$).
+	\item Ein einfacher Marker in der Nachricht entscheidet dar\"uber, ob eine Aktion durchgef\"uhrt werden soll (\textbf{!}) oder ein Zustand abgefragt wird (\textbf{?}).
 	Das verpackt die Nachrichten in intuitive, kurze S\"atze wie bei der Kommunikation mit z.B. kleinen Kindern.
 	\item Die Mini-Computer reagieren grunds\"atzlich nur auf Nachrichten, wenn ihr Nickname enthalten ist und sie gerade nicht durch andere Chat-Benutzer besetzt sind.
 	\item Letzteres kann sehr einfach \"uber ein unumst\"andliches, bereits integriertes Autorisierungskonzept geregelt werden.
