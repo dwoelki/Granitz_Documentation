@@ -308,6 +308,88 @@
 \clearpage
 
 
+\newboolean{INTERNAL_VERSION}
+\setboolean{INTERNAL_VERSION}{false}
+
+\ifthenelse{\boolean{INTERNAL_VERSION}}{
+
+	\section*{NOTE TO REVIEWERS}
+	
+	\begin{table}[h]
+	\begin{tabular}{||l||}
+	\hline
+	\textbf{Highlighted text (\hl{this way}) is either meant to be for internal version only}\\
+	\textbf{and to be removed for version to be published \textit{or} information to be verified.}
+	\\	
+	If a parameter name of a table's column is highlighted, the entire column will be removed.\\
+	Same applied to a table's line, if the line's first cell is highlighted.
+	\\
+	If the entire caption of a figure is highlighted, the entire figure will be removed.\\
+	If single sub-figure captions (within a minimap) are highlighted, only these sub-figures will be removed.
+	\\
+	\hline
+	\end{tabular}
+	\end{table}
+	
+}{
+	
+	\section*{Vorbemerkungen zur Verwendung des Dokuments}
+	
+	Diese Dokumentation ist ein Freizeitwerk und handelt ein Hobby ab, in dem der Spa{\ss} im Mittelpunkt stehen soll.
+	Der Autor ist ein Dokumentationsfetischist, um Entwicklungen festzuhalten (d.h. Versionierung, auch im strengen Sinne!) und Wissen zu teilen.
+	Dem Autor geht es dabei allgemeinhin nicht um Selbstdarstellung, sondern Wissenstransfer und Aufmunterung zur Zusammenarbeit.
+	KollegInnen k\"onnen das i.d.R. best\"atigen.
+	
+	Der Autor spricht aus Gewohnheit h\"aufig von sich in der dritten Person.
+	Er h\"alt sich aber nicht f\"ur Julius Caesar.
+	Die personalisierte Schreibform geh\"ort einfach nicht in den beruflichen Alltag, wenn es um Dokumentation geht.
+	Hier und da erinnert sich der Autor daran, so dass gelegentlich das 'Ich' in Erscheinung tritt.
+	
+	Text, der \hl{in dieser Art gehighlighted} ist, markiert entweder unverifizierten Inhalt, der zu einem sp\"ateren Zeitpunkt einem entsprechenden Review unterzogen wird, oder (noch) unvollst\"andigen Inhalt.
+	Die Dokumentationssprache ist Deutsch.
+	Sporadisches Aufflammen eines gewissen Denglisch ist wiederum dem Berufsalltag geschuldet.
+	Separierte Dokumentationen von mir, die sich mit sp\"ater eingesetzter, selbst geschriebener Software oder Hardwareansteuerung befassen, sind i.d.R. in Englisch dokumentiert.
+	Sorry, als Dokumentationssprache ist Englisch heutzutage einfach sinnvoller.
+	Was die Modellbahn selbst betrifft, bleibe ich lieber zu Hause oder zumindest in der Region.
+	Von daher ist das noch ein sinnvoller Bereicht f\"ur deutschsprachige Dokumentation.
+	Au{\ss}erdem haben Amerikaner tendenziell andere Vorstellungen davon, wie ein Zug aussehen sollte, als ich.
+	
+	Die Angaben in dieser Dokumentation spiegeln mal mehr, mal weniger abstrakt Ansichten des Autors wider.
+	Auch f\"ur den Fall, dass einige Passagen, insbesondere was Lokalpatriotismus und das regionale Umfeld des modellierten Szenarios betrifft, etwas bissig erscheinen, so sind sie niemals b\"oser Natur.
+	Der Autor ist zuallererst begr\"u{\ss}ender Weltb\"urger, danach erst Berliner und Europ\"aer.
+	Die Staatlichkeit spielt f\"ur ihn sehr untergeordnete Rolle.
+	Der Autor begr\"u{\ss}t alle nicht menschenverachtenden Lebensmodelle.
+	
+	Die Dokumentation wird unentgeltlich zur Verf\"ugung gestellt und ich erhalte von niemandem daf\"ur eine Verg\"utung in welcher Form auch immer.
+	Die Nennung von Marken, die im Modelleisenbahnbau g\"angig sind, sind nicht als Werbung an sich zu verstehen, sondern sollen Aufschluss \"uber verwendete Baus\"atze und Zugmaterial geben.
+	Die genannten Marken sind i.d.R. eingetragene, gesch\"utzte Markennamen.
+	Alle Bemerkungen zu deren Sortimenten sind rein zweckgebunden und in keinem Fall allgemein-wertend zu verstehen.
+	Alle genannten Modelleisenbahnhersteller (und dar\"uber hinaus noch viel mehr) sind meiner Meinung nach per se einem gewissen Idealismus verschrieben, so dass ihre Daseinsberechtigung und ihre Sortimente unsere Hobbywelt bereichern.
+	
+	Die Dokumentation wird zur Verf\"ugung gestellt, wie sie als jeweiliges PDF-Dokument kompiliert ist (\textit{'as is'}).
+	Die Selbstkompilierung oder anderweitige Nutzung von Rohdateien erfolgt auf eigene Verantwortung.
+	Dies betrifft den vollst\"andigen Umfang des Git-Projekts, das unter folgendem Link abrufbar ist:
+	\begin{itemize}
+		\item[] \textit{https://github.com/dwoelki/Granitz\_Documentation}
+	\end{itemize}
+	Der Autor \"ubernimmt keine Haftung f\"ur Sch\"aden, die durch die Dokumentation \textit{as is} oder Folgesch\"aden, z.B. durch Nachbau, entstehen.
+	Der Autor \"ubernimmt generell keine Haftung und Garantie f\"ur irgendwelche Teile dieser Dokumentation.
+	Verlinkte Inhalte werden nach bestem Wissen und Gewissen auf Legalit\"at und politische Korrektheit \"uberpr\"uft.
+	Gleichwohl \"ubernimmt der Autor keine Haftung f\"ur verlinkte Inhalte.
+	
+	Das Dokument sowie das gesamte Git-Repository mit Quell- und Erg\"anzungsdateien sind unter der \textit{Apache 2.0 License} lizensiert \cite{Apa04}.
+	Der vollst\"andige Text der Lizenz als Template, zu erg\"anzen um den Namen des Autors, ist verf\"ugbar unter folgendem Link:
+	\begin{itemize}
+		\item[] \textit{https://www.apache.org/licenses/LICENSE-2.0.txt}
+	\end{itemize}
+	
+	Dar\"uber hinaus gelten alle Konditionen der Apache 2.0 License.
+	
+}
+
+\clearpage
+
+
 
 \tableofcontents
 \newpage
@@ -371,84 +453,9 @@
 \clearpage
 \pagenumbering{arabic}		% Umbruch zu arabischen Seitenzahlen
 
-\newboolean{INTERNAL_VERSION}
-\setboolean{INTERNAL_VERSION}{false}
 
-\ifthenelse{\boolean{INTERNAL_VERSION}}{
 
-	\section*{NOTE TO REVIEWERS}
-	
-	\begin{table}[h]
-	\begin{tabular}{||l||}
-	\hline
-	\textbf{Highlighted text (\hl{this way}) is either meant to be for internal version only}\\
-	\textbf{and to be removed for version to be published \textit{or} information to be verified.}
-	\\	
-	If a parameter name of a table's column is highlighted, the entire column will be removed.\\
-	Same applied to a table's line, if the line's first cell is highlighted.
-	\\
-	If the entire caption of a figure is highlighted, the entire figure will be removed.\\
-	If single sub-figure captions (within a minimap) are highlighted, only these sub-figures will be removed.
-	\\
-	\hline
-	\end{tabular}
-	\end{table}
-	
-}{
-	
-	\section*{Vorbemerkungen}
-	
-	Diese Dokumentation ist ein Freizeitwerk und handelt ein Hobby ab, in dem der Spa{\ss} im Mittelpunkt stehen soll.
-	Der Autor ist ein Dokumentationsfetischist, um Entwicklungen festzuhalten (d.h. Versionierung, auch im strengen Sinne!) und Wissen zu teilen.
-	Dem Autor geht es dabei allgemeinhin nicht um Selbstdarstellung, sondern Wissenstransfer und Aufmunterung zur Zusammenarbeit.
-	KollegInnen k\"onnen das i.d.R. best\"atigen.
-	
-	Der Autor spricht aus Gewohnheit h\"aufig von sich in der dritten Person.
-	Er h\"alt sich aber nicht f\"ur Julius Caesar.
-	Die personalisierte Schreibform geh\"ort einfach nicht in den beruflichen Alltag, wenn es um Dokumentation geht.
-	Hier und da erinnert sich der Autor daran, so dass gelegentlich das "Ich" in Erscheinung tritt.
-	
-	Text, der \hl{in dieser Art gehighlighted} ist, markiert entweder unverifizierten Inhalt, der zu einem sp\"ateren Zeitpunkt einem entsprechenden Review unterzogen wird, oder (noch) unvollst\"andigen Inhalt.
-	Die Dokumentationssprache ist Deutsch.
-	Sporadisches Aufflammen eines gewissen Denglisch ist wiederum dem Berufsalltag geschuldet.
-	Separierte Dokumentationen von mir, die sich mit sp\"ater eingesetzter, selbst geschriebener Software oder Hardwareansteuerung befassen, sind i.d.R. in Englisch dokumentiert.
-	Sorry, als Dokumentationssprache ist Englisch heutzutage einfach sinnvoller.
-	Was die Modellbahn selbst betrifft, bleibe ich lieber zu Hause oder zumindest in der Region.
-	Von daher ist das noch ein sinnvoller Bereicht f\"ur deutschsprachige Dokumentation.
-	Au{\ss}erdem haben Amerikaner tendenziell andere Vorstellungen davon, wie ein Zug aussehen sollte, als ich.
-	
-	Die Angaben in dieser Dokumentation spiegeln mal mehr, mal weniger abstrakt Ansichten des Autors wider.
-	Auch f\"ur den Fall, dass einige Passagen, insbesondere was Lokalpatriotismus und das regionale Umfeld des modellierten Szenarios betrifft, etwas bissig erscheinen, so sind sie niemals b\"oser Natur.
-	Der Autor ist zuallererst begr\"u{\ss}ender Weltb\"urger, danach erst Berliner und Europ\"aer.
-	Die Staatlichkeit spielt f\"ur ihn sehr untergeordnete Rolle.
-	Der Autor begr\"u{\ss}t alle nicht menschenverachtenden Lebensmodelle.
-	
-	Die Dokumentation wird unentgeltlich zur Verf\"ugung gestellt und ich erhalte von niemandem daf\"ur eine Verg\"utung in welcher Form auch immer.
-	Die Nennung von Marken, die im Modelleisenbahnbau g\"angig sind, sind nicht als Werbung an sich zu verstehen, sondern sollen Aufschluss \"uber verwendete Baus\"atze und Zugmaterial geben.
-	Die genannten Marken sind i.d.R. eingetragene, gesch\"utzte Markennamen.
-	Alle Bemerkungen zu deren Sortimenten sind rein zweckgebunden und in keinem Fall allgemein-wertend zu verstehen.
-	Alle genannten Modelleisenbahnhersteller (und dar\"uber hinaus noch viel mehr) sind meiner Meinung nach per se einem gewissen Idealismus verschrieben, so dass ihre Daseinsberechtigung und ihre Sortimente unsere Hobbywelt bereichern.
-	
-	Die Dokumentation wird zur Verf\"ugung gestellt, wie sie als jeweiliges PDF-Dokument kompiliert ist (\textit{'as is'}).
-	Die Selbstkompilierung oder anderweitige Nutzung von Rohdateien erfolgt auf eigene Verantwortung.
-	Dies betrifft den vollst\"andigen Umfang des Git-Projekts, das unter folgendem Link abrufbar ist:
-	\begin{itemize}
-		\item[] \textit{https://github.com/dwoelki/Granitz\_Documentation}
-	\end{itemize}
-	Der Autor \"ubernimmt keine Haftung f\"ur Sch\"aden, die durch die Dokumentation \textit{as is} oder Folgesch\"aden, z.B. durch Nachbau, entstehen.
-	Der Autor \"ubernimmt generell keine Haftung und Garantie f\"ur irgendwelche Teile dieser Dokumentation.
-	Verlinkte Inhalte werden nach bestem Wissen und Gewissen auf Legalit\"at und politische Korrektheit \"uberpr\"uft.
-	Gleichwohl \"ubernimmt der Autor keine Haftung f\"ur verlinkte Inhalte.
-	
-	Das Dokument sowie das gesamte Git-Repository mit Quell- und Erg\"anzungsdateien sind unter der \textit{Apache 2.0 License} lizensiert \cite{Apa04}.
-	Der vollst\"andige Text der Lizenz als Template, zu erg\"anzen um den Namen des Autors, ist verf\"ugbar unter folgendem Link:
-	\begin{itemize}
-		\item[] \textit{https://www.apache.org/licenses/LICENSE-2.0.txt}
-	\end{itemize}
-	
-	Dar\"uber hinaus gelten alle Konditionen der Apache 2.0 License.
-	
-}
+\setcounter{section}{-1}
 
 	\include{tex/Abstract}
 
